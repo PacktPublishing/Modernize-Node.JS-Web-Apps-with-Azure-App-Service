@@ -8,7 +8,7 @@ const UsersController = require("./controllers/users-controller");
 const ToDosController = require('./controllers/todos-controller');
 
 const app = express();
-const clientRoot = path.join(__dirname, "..", "/client/dist/packt-app-service");
+const clientRoot = path.resolve(__dirname, "..", "/client");
 
 middleware(app, clientRoot);
 
@@ -16,7 +16,7 @@ app.use("/api/users", UsersController);
 app.use("/api/todos", ToDosController);
 
 app.get("/", (req, res) => {
-    res.sendFile(`${clientRoot}/index.html`);
+    res.send("Hello World");
 });
 
 errorHandlingMiddleware(app);
